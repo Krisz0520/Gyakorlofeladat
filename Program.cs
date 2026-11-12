@@ -2,7 +2,14 @@
 {
     internal class Program
     {
-        static string[] nevek = new string[10] { "", "", "", "alma", "", "", "", "kosz", "", "por", };
+        static string[] nevek = new string[10] { "", "", "", "", "", "", "", "", "", "", };
+        static string[] Elehelyezo()
+        {
+            nevek[4] = "alma";
+            nevek[8] = "kosz";
+            nevek[10] = "por";
+
+        }
         static int Vanehely()
         {
                 int szabadertek = -1;
@@ -69,14 +76,13 @@
                 }
             }
         }
-
-
-
         static void Main(string[] args)
         {
+
             int opcio;
             do
             {
+                Elehelyezo();
                 Console.WriteLine("\n-----------------------------------\n");
                 Console.WriteLine("Mit akar csinálni? \n[1] Elhelezni valamit \n[2] Takarít \n[3] Keresés \n[4] Magánhangzós Kilistázás \n[5] Kilistázás \n[6] Kilépés");
                 opcio = Convert.ToInt32(Console.ReadLine()!);
