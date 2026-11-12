@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static string[] nevek = new string[10] { "", "", "", "", "", "", "", "kosz", "", "por", };
+        static string[] nevek = new string[10] { "", "", "", "alma", "", "", "", "kosz", "", "por", };
         static int Vanehely()
         {
                 int szabadertek = -1;
@@ -36,16 +36,51 @@
                 }
             }
         }
+        static void KeresEtel()
+        {
+            Console.Write("Melyik ételt keresi?");
+            string keresendoEtel = Console.ReadLine()!;
+            bool nincsMeg = true;
+            Console.WriteLine();
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                if(keresendoEtel == nevek[i])
+                {
+                    Console.WriteLine($"Az étel a hűtben a {i+1}. helyen van");
+                    nincsMeg = false;
+                }
+            }
+            if(nincsMeg == true)
+            {
+                Console.WriteLine("0");
+            }
+        }
+        static void MaganhangzoVanE()
+        {
+            string maganhangzo = "aáeéiíoóöőuúüű";
+            foreach (var item in nevek)
+            {
+                if (item.Length > 0)
+                {
+                    if (maganhangzo.Contains(item[0]))
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
+            }
+        }
 
 
 
         static void Main(string[] args)
         {
-            int opcio = 0;
+            int opcio;
             do
             {
-                Console.WriteLine("Mit akar csinálni? \n[1] Elhelezni valamit \n[2] Takarít \n[3] Keresés \n[4] Kilistázás \n[5] Kilépés");
+                Console.WriteLine("\n-----------------------------------\n");
+                Console.WriteLine("Mit akar csinálni? \n[1] Elhelezni valamit \n[2] Takarít \n[3] Keresés \n[4] Magánhangzós Kilistázás \n[5] Kilistázás \n[6] Kilépés");
                 opcio = Convert.ToInt32(Console.ReadLine()!);
+                Console.WriteLine("\n-----------------------------------\n");
                 switch (opcio)
                 {
                     case 1:
@@ -54,8 +89,14 @@
                     case 2:
                         Takarit();
                         break;
-
+                    case 3:
+                        KeresEtel();
+                        break;
                     case 4:
+                        MaganhangzoVanE();
+                        break;
+
+                    case 5:
                             foreach (var item in nevek)
                             {
                                 Console.WriteLine(item);
@@ -63,7 +104,7 @@
                             break;
 
                         }
-            } while (opcio != 5);
+            } while (opcio != 6);
 
 
         }
